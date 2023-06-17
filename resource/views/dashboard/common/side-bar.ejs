@@ -1,0 +1,125 @@
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start bg-gradient-dark" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0">
+        <img src="/dashboard/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold text-white"><%= username %></span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white  <%= routeName == 'home'?' active bg-gradient-primary':' ' %>" href="/home">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <% if (roles == 'admin') { %>
+          <li class="nav-item">
+            <a class="nav-link text-white <%= routeName == 'roles' || routeName == 'role'?' active bg-gradient-primary':' ' %>" href="/roles">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">Roles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white <%= routeName == 'users' || routeName == 'user'?' active bg-gradient-primary':' ' %>" href="/users">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">receipt_long</i>
+              </div>
+              <span class="nav-link-text ms-1">Users</span>
+            </a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link text-white <%= routeName == 'questions' || routeName == 'question'?' active bg-gradient-primary':' ' %>" href="/questions">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">quiz</i>
+              </div>
+              <span class="nav-link-text ms-1">Questions</span>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link text-white <%= routeName == 'eligiblty-test-result' || routeName == 'eligiblty-test-result'?' active bg-gradient-primary':' ' %>" href="/eligiblty-test-result">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">quiz</i>
+              </div>
+              <span class="nav-link-text ms-1">Eligiblty Test Result</span>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link text-white <%= routeName == 'scholarship-test-result' || routeName == 'scholarship-test-result'?' active bg-gradient-primary':' ' %>" href="/scholarship-test-result">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">quiz</i>
+              </div>
+              <span class="nav-link-text ms-1">Scholarship Test Result</span>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link text-white <%= pathname == '/course/categories' || pathname == '/course/category'?' active bg-gradient-primary':' ' %>" href="/course/categories">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">category</i>
+              </div>
+              <span class="nav-link-text ms-1">Course Categories</span>
+            </a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link text-white <%= pathname == '/courses' || pathname == '/course'?' active bg-gradient-primary':' ' %>" href="/courses">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">golf_course</i>
+              </div>
+              <span class="nav-link-text ms-1">Courses</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white <%= pathname == '/course/terms' || pathname == '/course/term'?' active bg-gradient-primary':' ' %>" href="/course/terms">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">gavel</i>
+              </div>
+              <span class="nav-link-text ms-1">Course Curriculum Terms</span>
+            </a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link text-white <%= pathname == '/course/term-topics' || pathname == '/course/term-topic'?' active bg-gradient-primary':' ' %>" href="/course/term-topics">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">gavel</i>
+              </div>
+              <span class="nav-link-text ms-1">Course Term Topics</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white <%= pathname == '/course/course-faculty' || pathname == '/course/course-faculties'?' active bg-gradient-primary':' ' %>" href="/course/course-faculties">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">gavel</i>
+              </div>
+              <span class="nav-link-text ms-1">Course Faculty</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white <%= pathname == '/course/job-roles' || pathname == '/course/job-role'?' active bg-gradient-primary':' ' %>" href="/course/job-roles">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">work</i>
+              </div>
+              <span class="nav-link-text ms-1">Course Job Roles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white <%= pathname == '/course/features'?' active bg-gradient-primary':' ' %>" href="/course/features">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">grade</i>
+              </div>
+              <span class="nav-link-text ms-1">Course Features</span>
+            </a>
+          </li>
+       <% } %>   
+      </ul>
+    </div>
+    <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+      <div class="mx-3">
+        
+      </div>
+    </div>
+  </aside>

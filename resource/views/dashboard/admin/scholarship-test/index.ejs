@@ -1,0 +1,82 @@
+<%- include('../../common/header') %> 
+<%- include('../../common/side-bar') %>
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <%- include('../../common/navbar') %>
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3">Questions table</h6>
+                </div>
+              </div>
+            <div class="card-body py-3 pb-2">
+                <%- include('../../../errors/flash-message')  %>
+                <a href="/scholarship-test/create/<%=course_id%>" class="btn btn-sm btn-info" style="float: right;">Add New Question </a>
+                <table id="table_id" class=" align-items-center justify-content-center mb-0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Question</th>
+                            <th>Options</th>
+                            <th>Correct Answer</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% questionsList.forEach((element,key) => { %>
+                        <% var check_answer_media = false %>
+                            <tr>
+                                <td><%= key+1 %></td>
+                                <td><%= element.question %> <% if(element.is_media){%> <img src="/question/<%= element.media_path%>">  <%}%></td>
+                                <td>
+                                    <% element.answers.forEach((element2,key) => { %>
+                                        <% if(element2.is_media){%>
+                                        <% check_answer_media = true %>
+                                            <img src="/answer/<%= element2.media_path%>">  <br> 
+                                        <%}else{%>
+                                            <%= element2.answer %>  <br> 
+                                        <%}%>
+                                    <% }) %>
+                                </td>
+                                <td>
+                                    <% if (element.correct_answer) { %>
+                                        <% element.answers.forEach((element3,key) => { %>
+                                            <%if(element3.id == element.correct_answer.correct_answer_id){%>
+                                                <% if(element3.is_media){%>
+                                                    <img src="/answer/<%= element3.media_path%>">  <br> 
+                                                <%}else{%>
+                                                    <%= element3.answer %>  <br> 
+                                                <%}%>
+                                            <%}%>
+                                        <% }) %>
+                                    <% } %>
+                                </td>
+                                <td style="display: flex;">
+                                    <a href="/scholarship-test/edit/<%= element.id %>" class="btn btn-sm btn-warning">Edit</a>
+                                    &nbsp;
+                                    <form action="/scholarship-test/delete/<%= element.id %>" method="POST">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</main>
+
+
+<%- include('../../common/footer') %> 
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+</script>

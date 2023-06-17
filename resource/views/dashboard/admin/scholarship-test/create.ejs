@@ -1,0 +1,64 @@
+<%- include('../../common/header') %> 
+<%- include('../../common/side-bar') %>
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <%- include('../../common/navbar') %>
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-xl-3 col-sm-3 mb-xl-0 mb-4">
+        </div>
+        <div class="col-xl-6 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3">Add New Questions</h6>
+                </div>
+              </div>
+            <div class="card-body px-3 pb-2">
+              <%- include('../../../errors/flash-message')  %>
+                <form role="form" action="/scholarship-test/store" method="post">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <input type="hidden" name="course_id" value="<%= course_id %>">
+                    
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Question</label>
+                      <input type="text" class="form-control" name="question" required>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Option 1</label>
+                      <input type="text" class="form-control" name="option[]" required>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Option 2</label>
+                      <input type="text" class="form-control" name="option[]" required>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Option 3</label>
+                      <input type="text" class="form-control" name="option[]" required>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Option 4</label>
+                      <input type="text" class="form-control" name="option[]" required>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <select name="correct_answer" class="form-control">
+                          <option value="">Select Correct Answer</option>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                          <option value="4">Option 4</option>
+                      </select>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Create</button>
+                    </div>
+                  </form>
+         </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</main>
+
+
+<%- include('../../common/footer') %> 

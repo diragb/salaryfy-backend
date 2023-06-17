@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "gravitY@88#2022new",
+    "database": "data_folkz_node",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "data_folkz_node",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "data_folkz_node",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

@@ -1,0 +1,89 @@
+<%- include('../../../common/header') %> 
+<%- include('../../../common/side-bar') %>
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <%- include('../../../common/navbar') %>
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-xl-3 col-sm-3 mb-xl-0 mb-4">
+        </div>
+        <div class="col-xl-6 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3">Edit Questions</h6>
+                </div>
+            </div>
+            <div class="card-body px-3 pb-2">
+              <form role="form" action="/media-question/update/<%= questions.id %>?_csrf=<%=csrfToken%>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="input-group input-group-outline mb-3">
+                  <select name="category" class="form-control">
+                      <option value="">Select Category</option>
+                      <option value="logical_reasoning" <% if(questions.category =='logical_reasoning' && typeof questions.category != 'undefined'){%> selected <% } %> >Logical Reasoning</option>
+                      <option value="audio_visual_processing" <% if(questions.category =='audio_visual_processing' && typeof questions.category != 'undefined'){%> selected <% } %> >Audio Visual Processing</option>
+                      <option value="language_comprehension" <% if(questions.category =='language_comprehension' && typeof questions.category != 'undefined'){%> selected <% } %> >Language Comprehension</option>
+                  </select>
+                </div>
+                <div class="input-group input-group-outline mb-3 is-filled">
+                  <label class="form-label">Question</label>
+                  <input type="text" class="form-control" name="question" value="<%= questions.question %>" required>
+                </div>
+                <input type="hidden" name="is_media" value="1">
+
+                <div class="input-group input-group-outline mb-3 is-filled">
+                  <label class="form-label">Question Image</label>
+                  <input type="file" class="form-control" name="image" required>
+                </div>
+                <div class="input-group input-group-outline mb-3 is-filled">
+                  <label class="form-label">Option 1</label>
+                  <input type="file" class="form-control" name="options"  required>
+                </div>
+                <div class="input-group input-group-outline mb-3 is-filled">
+                  <label class="form-label">Option 2</label>
+                  <input type="file" class="form-control" name="options"  required>
+                </div>
+                <div class="input-group input-group-outline mb-3 is-filled">
+                  <label class="form-label">Option 3</label>
+                  <input type="file" class="form-control" name="options"  required>
+                </div>
+                <div class="input-group input-group-outline mb-3 is-filled">
+                  <label class="form-label">Option 4</label>
+                  <input type="file" class="form-control" name="options"  required>
+                </div>
+                <div class="input-group input-group-outline mb-3">
+                  <select name="correct_answer" class="form-control">
+                      <option value="">Select Correct Answer</option>
+                      <option value="1" <% if (questions.correct_answer) { %>
+                                              <%if(questions.answers[0].id == questions.correct_answer.correct_answer_id){%>
+                                                  selected
+                                              <%}%>
+                                      <% } %> >Option 1</option>
+                      <option value="2" <% if (questions.correct_answer) { %>
+                                            <%if(questions.answers[1].id == questions.correct_answer.correct_answer_id){%>
+                                                selected
+                                            <%}%>
+                                    <% } %>>Option 2</option>
+                      <option value="3" <% if (questions.correct_answer) { %>
+                                          <%if(questions.answers[2].id == questions.correct_answer.correct_answer_id){%>
+                                              selected
+                                          <%}%>
+                                  <% } %>>Option 3</option>
+                      <option value="4" <% if (questions.correct_answer) { %>
+                                        <%if(questions.answers[3].id == questions.correct_answer.correct_answer_id){%>
+                                            selected
+                                        <%}%>
+                                <% } %>>Option 4</option>
+                  </select>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+<%- include('../../../common/footer') %> 
